@@ -29,6 +29,7 @@ const COLORS = ['#f87171','#fb923c','#fbbf24','#4ade80','#34d399','#22d3ee','#60
 let app, db;
 let myId = '', myName = '', myColor = '';
 let isFirebaseReady = false;
+let joinTime = Date.now(); 
 
 // ══ INIT
 window.addEventListener('DOMContentLoaded', () => {
@@ -78,6 +79,8 @@ window.reroll = function() {
 
 // ══ JOIN
 window.joinChat = function() {
+  joinTime = Date.now();
+  
   document.getElementById('join-screen').classList.add('hidden');
   document.getElementById('chat-screen').classList.remove('hidden');
 
@@ -138,7 +141,11 @@ function listenMessages() {
   const msgsRef = query(ref(db, 'messages'), orderByKey(), limitToLast(80));
   onChildAdded(msgsRef, snap => {
     const msg = snap.val();
-    if (msg) renderMessage(msg);
+    if (!msg) return;
+
+    if (msg.ts && msg.ts >= joinTime) {
+      renderMessage(msg);
+    }
   });
 }
 
