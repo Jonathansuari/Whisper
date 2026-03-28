@@ -63,8 +63,8 @@ function generateIdentity() {
 }
 
 function renderNickname() {
-  document.getElementById('nick-dot').textContent = myName;
-  document.getElementById('nick-name').style.background = myColor;
+  document.getElementById('nick-name').textContent = myName;
+  document.getElementById('nick-dot').style.background = myColor;
 }
 
 window.reroll = function() {
