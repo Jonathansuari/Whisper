@@ -274,3 +274,11 @@ window.autoGrow = function(el) {
   el.style.height = Math.min(el.scrollHeight, 110) + 'px';
   document.getElementById('send-btn').disabled = el.value.trim().length === 0;
 };
+
+const wm = document.getElementById("watermark");
+
+let text = "אסור לצלם • שמרו על הפרטיות ";
+
+if (wm) {
+  wm.innerHTML = (text + " ").repeat(50);
+}
