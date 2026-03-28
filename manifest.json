@@ -1,0 +1,24 @@
+{
+  "name": "ויספר — צ'אט אנונימי",
+  "short_name": "ויספר",
+  "description": "קבוצת צ'אט אנונימית. אף אחד לא יודע מי אתה.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b0c14",
+  "theme_color": "#0b0c14",
+  "lang": "he",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

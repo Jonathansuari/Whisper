@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0b0c14" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>ויספר</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ══ SPLASH ══ -->
+<div id="splash">
+  <div class="splash-inner">
+    <div class="splash-ghost">👻</div>
+    <div class="splash-title">Whisper</div>
+    <div class="splash-sub">WHISPER</div>
+  </div>
+</div>
+
+<!-- ══ JOIN SCREEN ══ -->
+<div id="join-screen" class="screen hidden">
+  <div class="join-bg"></div>
+  <div class="join-card">
+    <div class="join-icon">👻</div>
+    <h1 class="join-title">Whisper</h1>
+    <p class="join-desc">קבוצת צ'אט אנונימית.<br/>אף אחד לא יודע מי אתה.</p>
+
+    <div class="nick-box" id="nick-box" onclick="reroll()">
+      <div class="nick-dot" id="nick-dot"></div>
+      <span class="nick-name" id="nick-name">טוען...</span>
+      <span class="nick-reroll">🎲</span>
+    </div>
+    <p class="nick-hint">הכינוי שלך — לחץ לשנות</p>
+
+    <button class="join-btn" id="join-btn" onclick="joinChat()">
+      <span>כנס לצ'אט</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+
+    <p class="privacy-note">🔒 אנונימי · אין רישום · אין שמירה</p>
+  </div>
+</div>
+
+<!-- ══ CHAT SCREEN ══ -->
+<div id="chat-screen" class="screen hidden">
+
+  <header class="chat-header">
+    <button class="back-btn" onclick="leaveChat()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </button>
+    <div class="header-center">
+      <span class="header-title">ויספר 👻</span>
+      <span class="header-online" id="online-badge">
+        <span class="online-dot"></span>
+        <span id="online-count">0 מחוברים</span>
+      </span>
+    </div>
+    <div class="my-badge">
+      <div class="my-badge-dot" id="my-badge-dot"></div>
+      <span id="my-badge-name"></span>
+    </div>
+  </header>
+
+  <div id="messages" class="messages-area">
+    <div id="empty-state" class="empty-state">
+      <div class="empty-icon">💬</div>
+      <p>אין עדיין הודעות</p>
+      <span>היה הראשון לדבר</span>
+    </div>
+  </div>
+
+  <div class="input-wrap">
+    <div class="input-bar" id="input-bar">
+      <textarea
+        id="msg-input"
+        placeholder="כתוב משהו..."
+        rows="1"
+        maxlength="500"
+        onkeydown="handleKey(event)"
+        oninput="autoGrow(this)"
+      ></textarea>
+      <button id="send-btn" onclick="sendMsg()" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2 21L23 12 2 3v7l15 2-15 2v7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Firebase SDK -->
+<script type="module" src="app.js"></script>
+</body>
+</html>
